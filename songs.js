@@ -56,9 +56,29 @@ var songs = [
     {
         "ID": "10",
         "Title": "The River Is Rising",
-        "Artist": "Slash ft. Myles Kennedy and The Conspirators",
+        "Artist": "SMKC",
         "Path": "source/Slash ft Myles Kennedy and The Conspirators - The River Is Rising - .mp3"
     }
 ];
 
+var titles = document.getElementsByClassName('title');
+var parafs = document.getElementsByClassName('artist')
+function getTitle(){
+    for(let i = 0; i<songs.length;i++){
+        titles[i].innerHTML = songs[i].Title;
+    }
+}
+
+getTitle(); // Şarkı isimlerini çeker.
+
+function getArtist(){
+    for(let i = 0;i<songs.length;i++){
+        parafs[i].innerHTML = songs[i].Artist;
+    }
+}
+
+getArtist(); //Şarkı artistlerini çeker
+
+
+// Buraya kadar JS Uğurcan KUZU tarafından hazırlanmıştır.
 
