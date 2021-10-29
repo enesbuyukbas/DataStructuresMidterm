@@ -83,6 +83,8 @@ var songs = [
 var titles = document.getElementsByClassName('title');
 var parafs = document.getElementsByClassName('artist');
 var images = document.getElementsByClassName('image');
+var input = document.querySelector('input');
+var songCards = document.getElementsByClassName('song');
 function getTitle(){
     for(let i = 0; i<songs.length;i++){
         titles[i].innerHTML = songs[i].Title;
@@ -104,6 +106,23 @@ function getPhoto(){
         images[i].src = songs[i].photo_path;
     }
 }
-getPhoto();
-// Buraya kadar JS Uğurcan KUZU tarafından hazırlanmıştır.
+getPhoto(); // Şarkı kapak fotoğraflarını çeker.
+
+function search(){
+    for(let i = 0; i<songs.length;i++){
+        if(!songs[i].Title.toLowerCase().includes(input.value.toLowerCase())){
+            songCards[i].style.display = "none";
+        }
+        if(input.value == ""){
+            for (const item of songCards) {
+                item.style.display = "flex";
+            }
+        }
+    }
+    
+}
+
+input.addEventListener('keydown',search) // Inputa tıklanmışken her tuş basıldığında arama metodunu çalıştırır.
+
+
 
