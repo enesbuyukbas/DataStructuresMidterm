@@ -108,6 +108,12 @@ function getPhoto(){
 }
 getPhoto(); // Şarkı kapak fotoğraflarını çeker.
 
+function idForSongCards(){
+    for(let i = 0; i<songs.length;i++){
+        songCards[i].id = songs[i].ID;
+    }
+}
+idForSongCards(); // Divlere idlerini songs objelerinden çeker.
 function search(){
     for(let i = 0; i<songs.length;i++){
         if(!songs[i].Title.toLowerCase().includes(input.value.toLowerCase())){
