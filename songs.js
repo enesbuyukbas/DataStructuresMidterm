@@ -4,21 +4,24 @@ var songs = [
         "Title": "Okyanus",
         "Artist": "Şebnem Ferah",
         "Path": "source/ Şebnem Ferah - Okyanus.mp3",
-        "photo_path":"images/sebnem_ferah.jpeg"
+        "photo_path":"images/sebnem_ferah.jpeg",
+        "time":"275"
     },
     {
         "ID": "2",
         "Title": "Dream On",
         "Artist": "Aerosmith",
         "Path": "source/Aerosmith - Dream On.mp3",
-        "photo_path": "images/aerosmith.jpeg"
+        "photo_path": "images/aerosmith.jpeg",
+        "time":"268"
     },
     {
         "ID": "3",
         "Title": "So Far Away",
         "Artist": "Avenged Sevenfold",
         "Path": "source/Avenged Sevenfold  So Far Away.mp3",
-        "photo_path": "images/a7x.jpg"
+        "photo_path": "images/a7x.jpg",
+        "time":"328"
 
     },
     {
@@ -26,7 +29,8 @@ var songs = [
         "Title": "The Thrill Is Gone",
         "Artist": "BB King",
         "Path": "source/BB King  The Thrill Is Gone.mp3",
-        "photo_path": "images/bbking.jpg"
+        "photo_path": "images/bbking.jpg",
+        "time":"665"
 
     },
     {
@@ -34,7 +38,8 @@ var songs = [
         "Title": "The Sky Is Crying",
         "Artist": "G. BB Coleman",
         "Path": "source/Gary BB Coleman  - The Sky is Crying.mp3",
-        "photo_path": "images/bbcoleman.jpg"
+        "photo_path": "images/bbcoleman.jpg",
+        "time":"553"
 
 
     },
@@ -43,7 +48,8 @@ var songs = [
         "Title": "Sweet Child O Mine",
         "Artist": "Guns N Roses",
         "Path": "source/Guns N Roses - Sweet Child O Mine.mp3",
-        "photo_path": "images/gnr.jpg"
+        "photo_path": "images/gnr.jpg",
+        "time":"303"
 
     },
     {
@@ -51,7 +57,8 @@ var songs = [
         "Title": "Cambaz",
         "Artist": "Mor ve Ötesi",
         "Path": "source/Mor ve Ötesi  - Cambaz.mp3",
-        "photo_path": "images/morveotesi.jpeg"
+        "photo_path": "images/morveotesi.jpeg",
+        "time":"231"
 
     },
     {
@@ -59,7 +66,8 @@ var songs = [
         "Title": "Smells Like Teen Spirit",
         "Artist": "Nirvana",
         "Path": "source/Nirvana - Smells Like Teen Spirit Video.mp3",
-        "photo_path": "images/nirvana.jpeg"
+        "photo_path": "images/nirvana.jpeg",
+        "time":"278"
 
     },
     {
@@ -67,7 +75,8 @@ var songs = [
         "Title": "Disturbing The Peace",
         "Artist": "Pentagram aka. Mezarkabul",
         "Path": "source/Pentagram - Disturbing the Peace.mp3",
-        "photo_path": "images/pentagram.jpeg"
+        "photo_path": "images/pentagram.jpeg",
+        "time":"256"
 
     },
     {
@@ -75,7 +84,8 @@ var songs = [
         "Title": "The River Is Rising",
         "Artist": "SMKC",
         "Path": "source/Slash ft Myles Kennedy and The Conspirators - The River Is Rising - .mp3",
-        "photo_path": "images/smkc.jpeg"
+        "photo_path": "images/smkc.jpeg",
+        "time":"221"
 
     }
 ];
