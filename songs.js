@@ -95,6 +95,15 @@ var parafs = document.getElementsByClassName('artist');
 var images = document.getElementsByClassName('image');
 var input = document.querySelector('input');
 var songCards = document.getElementsByClassName('song');
+
+
+var currentSongCover = document.getElementById('currentSongCover');
+var btnBack = document.getElementById('back');
+var btnPlayPause = document.getElementById('play-pause');
+var btnForward = document.getElementById('forward');
+
+
+
 function getTitle(){
     for(let i = 0; i<songs.length;i++){
         titles[i].innerHTML = songs[i].Title;
@@ -140,5 +149,63 @@ function search(){
 
 input.addEventListener('keydown',search) // Inputa tıklanmışken her tuş basıldığında arama metodunu çalıştırır.
 
+var audio = new Audio();
+var audioState = false;
+var songStack = [];
+var songQueue = [];
+
+function playPause(){
+    if(audioState){
+        audio.pause();
+        audioState = false;
+    }else{
+        audio.play();
+        audioState = true;
+    }
+}
 
 
+function changePlayPauseIcon(){
+    if(btnPlayPause.innerHTML == "<i class=\"fas fa-play\"></i>"){
+        btnPlayPause.innerHTML = "<i class=\"fas fa-pause\"></i>";
+    }else{
+        btnPlayPause.innerHTML = "<i class=\"fas fa-play\"></i>";
+    }
+}
+
+
+
+
+for (const item of songCards) {
+    item.addEventListener('click',()=>{
+        for (const x of songs) {
+            if(x.ID == item.id){
+                // Tıklanan şarkının fotoğrafını getirir.
+                currentSongCover.style.display = "initial";
+                currentSongCover.src = x.photo_path;
+                //
+                audio.src = x.Path;
+                audio.play();
+                changePlayPauseIcon();
+                audioState = true;
+                if(!songStack.includes(x)){
+                    songStack.push(x);
+                }
+
+            }
+        }
+    })
+    
+}
+function playPauseWrapper(){
+    playPause();
+    changePlayPauseIcon();
+}
+function back(){
+    let song = songStack.pop();
+    currentSongCover.src = song.photo_path;
+    audio.src = song.Path;
+    audio.play();
+}
+btnPlayPause.addEventListener('click', playPauseWrapper);
+btnBack.addEventListener('click',back);

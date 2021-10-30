@@ -95,14 +95,14 @@
             </div>
         </div>
         <div class="mediaplayer">
-            <img src="images/sebnem_ferah.jpeg" width="100" height="100" id="currentSongCover" alt="Current song cover">
-            <button class="mediaButton"><i class="fas fa-step-backward"></i></button>
-            <button class="mediaButton"><i class="fas fa-play"></i></button>
+            <img src="" width="100" height="100" id="currentSongCover" alt="Current song cover">
+            <button class="mediaButton" id="back"><i class="fas fa-step-backward"></i></button>
+            <button class="mediaButton" id="play-pause"><i class="fas fa-play"></i></button>
             <div id="sliderFrame">
                 <p>0:00</p>
-                <input type="range" min="0" max="100">
+                <input type="range" min="0" max="100" value="0">
             </div>
-            <button class="mediaButton"><i class="fas fa-step-forward"></i></button>
+            <button class="mediaButton" id="forward"><i class="fas fa-step-forward"></i></button>
         </div>
     </div>
     <script src="songs.js"></script>
