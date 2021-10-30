@@ -101,8 +101,8 @@ var currentSongCover = document.getElementById('currentSongCover');
 var btnBack = document.getElementById('back');
 var btnPlayPause = document.getElementById('play-pause');
 var btnForward = document.getElementById('forward');
-
-
+var timer = document.getElementById('timer');
+var slider = document.getElementById('slider');
 
 function getTitle(){
     for(let i = 0; i<songs.length;i++){
@@ -166,7 +166,7 @@ function playPause(){
 
 
 function changePlayPauseIcon(){
-    if(btnPlayPause.innerHTML == "<i class=\"fas fa-play\"></i>"){
+    if(audioState){
         btnPlayPause.innerHTML = "<i class=\"fas fa-pause\"></i>";
     }else{
         btnPlayPause.innerHTML = "<i class=\"fas fa-play\"></i>";
@@ -186,16 +186,20 @@ for (const item of songCards) {
                 //
                 audio.src = x.Path;
                 audio.play();
-                changePlayPauseIcon();
                 audioState = true;
+                changePlayPauseIcon();
                 if(!songStack.includes(x)){
                     songStack.push(x);
                 }
-
+                changeTitle();
+                getTime();
             }
         }
     })
     
+}
+function changeTitle(){
+    document.title = songStack[songStack.length-1].Title + " | " + songStack[songStack.length-1].Artist;
 }
 function playPauseWrapper(){
     playPause();
@@ -206,6 +210,29 @@ function back(){
     currentSongCover.src = song.photo_path;
     audio.src = song.Path;
     audio.play();
+    changeTitle()
+    getTime();
 }
+function getTime(){
+    let convertedSecond = Number.parseInt(songStack[songStack.length-1].time);
+    let minute = Math.floor(convertedSecond/60);
+    let second = convertedSecond - minute * 60;
+    if(second < 10){
+        second = "0"+second;
+    }
+    timer.innerHTML = minute + ":" + second;
+
+}
+
+
 btnPlayPause.addEventListener('click', playPauseWrapper);
 btnBack.addEventListener('click',back);
+
+document.addEventListener('keydown',(e)=>{
+    if(e.code === "Space"){
+        if(songStack.length !== 0){
+            playPauseWrapper();
+        }
+        
+    }
+})
