@@ -4,8 +4,8 @@ var songs = [
         "Title": "Okyanus",
         "Artist": "Şebnem Ferah",
         "Path": "source/ Şebnem Ferah - Okyanus.mp3",
-        "photo_path":"images/sebnem_ferah.jpeg",
-        "time":"275"
+        "photo_path": "images/sebnem_ferah.jpeg",
+        "time": "275"
     },
     {
         "ID": "2",
@@ -13,7 +13,7 @@ var songs = [
         "Artist": "Aerosmith",
         "Path": "source/Aerosmith - Dream On.mp3",
         "photo_path": "images/aerosmith.jpeg",
-        "time":"268"
+        "time": "268"
     },
     {
         "ID": "3",
@@ -21,7 +21,7 @@ var songs = [
         "Artist": "Avenged Sevenfold",
         "Path": "source/Avenged Sevenfold  So Far Away.mp3",
         "photo_path": "images/a7x.jpg",
-        "time":"328"
+        "time": "328"
 
     },
     {
@@ -30,7 +30,7 @@ var songs = [
         "Artist": "BB King",
         "Path": "source/BB King  The Thrill Is Gone.mp3",
         "photo_path": "images/bbking.jpg",
-        "time":"665"
+        "time": "665"
 
     },
     {
@@ -39,7 +39,7 @@ var songs = [
         "Artist": "G. BB Coleman",
         "Path": "source/Gary BB Coleman  - The Sky is Crying.mp3",
         "photo_path": "images/bbcoleman.jpg",
-        "time":"553"
+        "time": "553"
 
 
     },
@@ -49,7 +49,7 @@ var songs = [
         "Artist": "Guns N Roses",
         "Path": "source/Guns N Roses - Sweet Child O Mine.mp3",
         "photo_path": "images/gnr.jpg",
-        "time":"303"
+        "time": "303"
 
     },
     {
@@ -58,7 +58,7 @@ var songs = [
         "Artist": "Mor ve Ötesi",
         "Path": "source/Mor ve Ötesi  - Cambaz.mp3",
         "photo_path": "images/morveotesi.jpeg",
-        "time":"231"
+        "time": "231"
 
     },
     {
@@ -67,7 +67,7 @@ var songs = [
         "Artist": "Nirvana",
         "Path": "source/Nirvana - Smells Like Teen Spirit Video.mp3",
         "photo_path": "images/nirvana.jpeg",
-        "time":"278"
+        "time": "278"
 
     },
     {
@@ -76,7 +76,7 @@ var songs = [
         "Artist": "Pentagram aka. Mezarkabul",
         "Path": "source/Pentagram - Disturbing the Peace.mp3",
         "photo_path": "images/pentagram.jpeg",
-        "time":"256"
+        "time": "256"
 
     },
     {
@@ -85,7 +85,7 @@ var songs = [
         "Artist": "SMKC",
         "Path": "source/Slash ft Myles Kennedy and The Conspirators - The River Is Rising - .mp3",
         "photo_path": "images/smkc.jpeg",
-        "time":"221"
+        "time": "221"
 
     }
 ];
@@ -106,50 +106,50 @@ var slider = document.getElementById('slider');
 var queueButtons = document.getElementsByClassName('add');
 var success = document.getElementById('success');
 
-function getTitle(){
-    for(let i = 0; i<songs.length;i++){
+function getTitle() {
+    for (let i = 0; i < songs.length; i++) {
         titles[i].innerHTML = songs[i].Title;
     }
 }
 
 getTitle(); // Şarkı isimlerini çeker.
 
-function getArtist(){
-    for(let i = 0;i<songs.length;i++){
+function getArtist() {
+    for (let i = 0; i < songs.length; i++) {
         parafs[i].innerHTML = songs[i].Artist;
     }
 }
 
 getArtist(); //Şarkı artistlerini çeker
 
-function getPhoto(){
-    for(let i = 0;i<songs.length;i++){
+function getPhoto() {
+    for (let i = 0; i < songs.length; i++) {
         images[i].src = songs[i].photo_path;
     }
 }
 getPhoto(); // Şarkı kapak fotoğraflarını çeker.
 
-function idForSongCards(){
-    for(let i = 0; i<songs.length;i++){
+function idForSongCards() {
+    for (let i = 0; i < songs.length; i++) {
         songCards[i].id = songs[i].ID;
     }
 }
 idForSongCards(); // Divlere idlerini songs objelerinden çeker.
-function search(){
-    for(let i = 0; i<songs.length;i++){
-        if(!songs[i].Title.toLowerCase().includes(input.value.toLowerCase())){
+function search() {
+    for (let i = 0; i < songs.length; i++) {
+        if (!songs[i].Title.toLowerCase().includes(input.value.toLowerCase())) {
             songCards[i].style.display = "none";
         }
-        if(input.value == ""){
+        if (input.value == "") {
             for (const item of songCards) {
                 item.style.display = "flex";
             }
         }
     }
-    
+
 }
 
-input.addEventListener('keydown',search) // Inputa tıklanmışken her tuş basıldığında arama metodunu çalıştırır.
+input.addEventListener('keydown', search) // Inputa tıklanmışken her tuş basıldığında arama metodunu çalıştırır.
 
 
 
@@ -161,21 +161,21 @@ var audioState = false;
 var songStack = [];
 var songQueue = [];
 
-function playPause(){
-    if(audioState){
+function playPause() {
+    if (audioState) {
         audio.pause();
         audioState = false;
-    }else{
+    } else {
         audio.play();
         audioState = true;
     }
 }
 
 
-function changePlayPauseIcon(){
-    if(audioState){
+function changePlayPauseIcon() {
+    if (audioState) {
         btnPlayPause.innerHTML = "<i class=\"fas fa-pause\"></i>";
-    }else{
+    } else {
         btnPlayPause.innerHTML = "<i class=\"fas fa-play\"></i>";
     }
 }
@@ -184,9 +184,9 @@ function changePlayPauseIcon(){
 
 
 for (const item of songCards) {
-    item.addEventListener('click',()=>{
+    item.addEventListener('click', () => {
         for (const x of songs) {
-            if(x.ID == item.id){
+            if (x.ID == item.id) {
                 // Tıklanan şarkının fotoğrafını getirir.
                 currentSongCover.style.display = "initial";
                 currentSongCover.src = x.photo_path;
@@ -195,61 +195,61 @@ for (const item of songCards) {
                 audio.play();
                 audioState = true;
                 changePlayPauseIcon();
-                if(!songStack.includes(x)){
+                if (!songStack.includes(x)) {
                     songStack.push(x);
                 }
                 changeTitle(x);
-                getTime(x);
+                getTime(x.time);
             }
         }
     })
-    
+
 }
-function changeTitle(item){
+function changeTitle(item) {
     document.title = item.Title + " | " + item.Artist;
 }
-function playPauseWrapper(){
+function playPauseWrapper() {
     playPause();
     changePlayPauseIcon();
 }
-function backStack(){
+function backStack() {
     let song = songStack.pop();
     currentSongCover.src = song.photo_path;
     audio.src = song.Path;
     audio.play();
     changeTitle(song)
-    getTime(song);
+    getTime(song.time);
 }
-function getTime(songObject){
-    let convertedSecond = Number.parseInt(songObject.time);
-    let minute = Math.floor(convertedSecond/60);
+function getTime(time) {
+    let convertedSecond = Number.parseInt(time);
+    let minute = Math.floor(convertedSecond / 60);
     let second = convertedSecond - minute * 60;
-    if(second < 10){
-        second = "0"+second;
+    if (second < 10) {
+        second = "0" + second;
     }
     timer.innerHTML = minute + ":" + second;
 
 }
-function forwardQueue(){
+function forwardQueue() {
     let song = songQueue.shift();
     currentSongCover.src = song.photo_path;
     audio.src = song.Path;
     audio.play();
     changeTitle(song);
-    getTime(song);
+    getTime(song.time);
 }
 
 for (const item of queueButtons) {
-    item.addEventListener('click',(e)=>{
+    item.addEventListener('click', (e) => {
         e.stopPropagation();
         for (const member of songs) {
-            if(member.ID == item.id){
+            if (member.ID == item.id) {
                 songQueue.push(member);
             }
         }
         success.style.display = "flex";
-        
-        success.addEventListener('animationend',()=>{
+
+        success.addEventListener('animationend', () => {
             success.style.display = "none";
         })
     })
@@ -257,14 +257,30 @@ for (const item of queueButtons) {
 
 
 
-btnForward.addEventListener('click',forwardQueue);
+btnForward.addEventListener('click', forwardQueue);
 btnPlayPause.addEventListener('click', playPauseWrapper);
-btnBack.addEventListener('click',backStack);
+btnBack.addEventListener('click', backStack);
 
-document.addEventListener('keydown',(e)=>{
-    if(e.code === "Space"){
-        if(songStack.length !== 0){
+document.addEventListener('keydown', (e) => {
+    if (e.code === "Space") {
+        if (songStack.length !== 0) {
             playPauseWrapper();
         }
     }
 })
+
+
+function setSliderValue() {
+    slider.value = "0";
+    audio.addEventListener('playing', () => {
+        setInterval(() => {
+            slider.value = Math.floor((audio.currentTime / audio.duration) * 100);
+            getTime(audio.duration - Math.floor(audio.currentTime));
+        }, 1000);
+    });
+    slider.addEventListener('click',()=>{
+        audio.currentTime = audio.duration * (slider.value/100);
+    });
+
+}
+setSliderValue();
