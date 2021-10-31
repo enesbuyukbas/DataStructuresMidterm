@@ -103,6 +103,8 @@ var btnPlayPause = document.getElementById('play-pause');
 var btnForward = document.getElementById('forward');
 var timer = document.getElementById('timer');
 var slider = document.getElementById('slider');
+var queueButtons = document.getElementsByClassName('add');
+var success = document.getElementById('success');
 
 function getTitle(){
     for(let i = 0; i<songs.length;i++){
@@ -148,6 +150,11 @@ function search(){
 }
 
 input.addEventListener('keydown',search) // Inputa tıklanmışken her tuş basıldığında arama metodunu çalıştırır.
+
+
+
+// Media Player'a ait tüm fonksiyonlar bu kısımdan itibaren başlamaktadır.
+// Stack ve Queue Yapıları da bu kısımda back ve forward butonlarına atanmıştır.
 
 var audio = new Audio();
 var audioState = false;
@@ -205,7 +212,7 @@ function playPauseWrapper(){
     playPause();
     changePlayPauseIcon();
 }
-function back(){
+function backStack(){
     let song = songStack.pop();
     currentSongCover.src = song.photo_path;
     audio.src = song.Path;
@@ -223,16 +230,41 @@ function getTime(){
     timer.innerHTML = minute + ":" + second;
 
 }
+function forwardQueue(){
+    let song = songQueue.shift();
+    currentSongCover.src = song.photo_path;
+    audio.src = song.Path;
+    audio.play();
+    changeTitle();
+    getTime();
+}
+
+for (const item of queueButtons) {
+    item.addEventListener('click',(e)=>{
+        e.stopPropagation();
+        for (const member of songs) {
+            if(member.ID == item.id){
+                songQueue.push(member);
+            }
+        }
+        success.style.display = "flex";
+        
+        success.addEventListener('animationend',()=>{
+            success.style.display = "none";
+        })
+    })
+}
 
 
+
+btnForward.addEventListener('click',forwardQueue);
 btnPlayPause.addEventListener('click', playPauseWrapper);
-btnBack.addEventListener('click',back);
+btnBack.addEventListener('click',backStack);
 
 document.addEventListener('keydown',(e)=>{
     if(e.code === "Space"){
         if(songStack.length !== 0){
             playPauseWrapper();
         }
-        
     }
 })
