@@ -198,15 +198,15 @@ for (const item of songCards) {
                 if(!songStack.includes(x)){
                     songStack.push(x);
                 }
-                changeTitle();
-                getTime();
+                changeTitle(x);
+                getTime(x);
             }
         }
     })
     
 }
-function changeTitle(){
-    document.title = songStack[songStack.length-1].Title + " | " + songStack[songStack.length-1].Artist;
+function changeTitle(item){
+    document.title = item.Title + " | " + item.Artist;
 }
 function playPauseWrapper(){
     playPause();
@@ -217,11 +217,11 @@ function backStack(){
     currentSongCover.src = song.photo_path;
     audio.src = song.Path;
     audio.play();
-    changeTitle()
-    getTime();
+    changeTitle(song)
+    getTime(song);
 }
-function getTime(){
-    let convertedSecond = Number.parseInt(songStack[songStack.length-1].time);
+function getTime(songObject){
+    let convertedSecond = Number.parseInt(songObject.time);
     let minute = Math.floor(convertedSecond/60);
     let second = convertedSecond - minute * 60;
     if(second < 10){
@@ -235,8 +235,8 @@ function forwardQueue(){
     currentSongCover.src = song.photo_path;
     audio.src = song.Path;
     audio.play();
-    changeTitle();
-    getTime();
+    changeTitle(song);
+    getTime(song);
 }
 
 for (const item of queueButtons) {
