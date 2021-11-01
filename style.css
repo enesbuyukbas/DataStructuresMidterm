@@ -154,6 +154,7 @@ body{
     font-size: 25px;
     transition: all .5s ease-in;
     width: 100%;
+    color: #000;
 }
 .mediaplayer button:hover{
     color: #0000ff;
@@ -404,6 +405,7 @@ input[type=range] {
     background-color: transparent;
     border: none;
     font-size: 25px;
+    color: #000;
   }
   #sliderFrame{
     width: 100%;
@@ -657,6 +659,7 @@ input[type=range] {
     background-color: transparent;
     border:none;
     font-size: 25px;
+    color: #000;
   }
   #sliderFrame{
     width: 100%;
